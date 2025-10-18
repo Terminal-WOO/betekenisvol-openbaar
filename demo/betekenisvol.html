@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Betekenisvolle Publicatie - Woo Demonstrator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            line-height: 1.6;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .hero h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero .lead {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.95;
+        }
+        
+        .quick-facts {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .fact {
+            background: rgba(255,255,255,0.2);
+            padding: 15px 25px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .fact-number {
+            font-size: 28px;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .fact-label {
+            font-size: 13px;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: -40px auto 0;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border-radius: 8px 8px 0 0;
+            position: relative;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #e0e0e0;
+            background: #f8f9fa;
+            border-radius: 8px 8px 0 0;
+            overflow-x: auto;
+        }
+        
+        .tab {
+            padding: 18px 28px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        
+        .tab:hover {
+            background: #e9ecef;
+        }
+        
+        .tab.active {
+            border-bottom-color: #0066cc;
+            background: white;
+            color: #0066cc;
+        }
+        
+        .tab-content {
+            padding: 40px;
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        h2 {
+            color: #003366;
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        h3 {
+            color: #0066cc;
+            font-size: 18px;
+            margin: 25px 0 15px;
+        }
+        
+        .info-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        
+        .info-card strong {
+            color: #003366;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .timeline-item {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #0066cc;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px #0066cc;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 17px;
+            width: 2px;
+            height: calc(100% + 10px);
+            background: #e0e0e0;
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: #0066cc;
+            margin-bottom: 5px;
+        }
+        
+        .stakeholder {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .stakeholder-header {
+            font-weight: bold;
+            color: #003366;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .measure {
+            background: #e7f3ff;
+            border-left: 4px solid #0066cc;
+            padding: 12px;
+            margin: 10px 0;
+        }
+        
+        .documents {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .document {
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 18px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .document:hover {
+            border-color: #0066cc;
+            box-shadow: 0 2px 8px rgba(0,102,204,0.15);
+        }
+        
+        .document-title {
+            font-weight: bold;
+            color: #003366;
+            margin-bottom: 8px;
+        }
+        
+        .document-meta {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .document-summary {
+            font-size: 14px;
+            color: #444;
+        }
+        
+        .cta-box {
+            background: linear-gradient(135deg, #28a745 0%, #20853a 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .cta-box h3 {
+            color: white;
+            margin: 0 0 15px;
+        }
+        
+        .cta-box p {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #28a745;
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        
+        .contact-item {
+            flex: 1;
+            min-width: 250px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 6px;
+        }
+        
+        .contact-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .contact-value {
+            font-size: 16px;
+            color: #003366;
+            font-weight: 500;
+        }
+        
+        .comparison-link {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #dc3545;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(220,53,69,0.4);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        .comparison-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(220,53,69,0.5);
+        }
+        
+        .financial-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .financial-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #28a745;
+        }
+        
+        .financial-label {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .financial-amount {
+            font-size: 22px;
+            font-weight: bold;
+            color: #003366;
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 24px;
+            }
+            
+            .container {
+                margin: -20px 10px 0;
+            }
+            
+            .tab-content {
+                padding: 20px;
+            }
+            
+            .comparison-link {
+                bottom: 15px;
+                right: 15px;
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="badge">✅ BETEKENISVOLLE OPENBAARMAKING</div>
+        <h1>Subsidie Windmolenpark Noordoostpolder - €2,5 miljoen voor schone energie</h1>
+        <p class="lead">
+            De provincie Flevoland heeft subsidie toegekend voor 5 windmolens aan de Ketelbrug. 
+            Ze leveren elektriciteit voor 8.000 huishoudens en besparen 12.000 ton CO2 per jaar.
+        </p>
+        
+        <div class="quick-facts">
+            <div class="fact">
+                <span class="fact-number">€2,5M</span>
+                <span class="fact-label">Provinciale subsidie</span>
+            </div>
+            <div class="fact">
+                <span class="fact-number">8.000</span>
+                <span class="fact-label">Huishoudens van energie</span>
+            </div>
+            <div class="fact">
+                <span class="fact-number">12.000</span>
+                <span class="fact-label">Ton CO2-besparing/jaar</span>
+            </div>
+            <div class="fact">
+                <span class="fact-number">850m</span>
+                <span class="fact-label">Afstand tot bebouwing</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="tabs">
+            <div class="tab active" onclick="showTab('overzicht')">📋 Overzicht</div>
+            <div class="tab" onclick="showTab('waarom')">❓ Waarom</div>
+            <div class="tab" onclick="showTab('locatie')">📍 Locatie</div>
+            <div class="tab" onclick="showTab('belanghebbenden')">👥 Belanghebbenden</div>
+            <div class="tab" onclick="showTab('tijdlijn')">📅 Tijdlijn</div>
+            <div class="tab" onclick="showTab('documenten')">📄 Documenten</div>
+            <div class="tab" onclick="showTab('participatie')">💬 Meedoen</div>
+        </div>
+        
+        <div id="overzicht" class="tab-content active">
+            <h2>In het kort</h2>
+            <p style="font-size: 16px; margin-bottom: 20px;">
+                De provincie Flevoland heeft op 10 januari 2025 besloten om €2,5 miljoen subsidie toe te kennen 
+                aan GreenWind B.V. voor de bouw van 5 windturbines in de Noordoostpolder, nabij de Ketelbrug.
+            </p>
+            
+            <h3>💡 Wat betekent dit voor u?</h3>
+            <div class="info-card">
+                <p><strong>Schone energie:</strong> De windmolens leveren elektriciteit voor ongeveer 8.000 huishoudens in de regio.</p>
+                <p><strong>Klimaat:</strong> Jaarlijks 12.000 ton minder CO2-uitstoot - dat is gelijk aan het planten van 600.000 bomen.</p>
+                <p><strong>Planning:</strong> Bouw start naar verwachting in september 2025, oplevering in maart 2026.</p>
+            </div>
+            
+            <h3>💰 Financiën</h3>
+            <div class="financial-breakdown">
+                <div class="financial-item">
+                    <div class="financial-label">Provinciale subsidie</div>
+                    <div class="financial-amount">€2,5M</div>
+                </div>
+                <div class="financial-item">
+                    <div class="financial-label">Eigen bijdrage GreenWind</div>
+                    <div class="financial-amount">€3,5M</div>
+                </div>
+                <div class="financial-item">
+                    <div class="financial-label">Totale investering</div>
+                    <div class="financial-amount">€6,0M</div>
+                </div>
+            </div>
+            
+            <p style="margin-top: 20px;"><strong>Verdeling subsidie:</strong></p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>€1.800.000 - Bouw 5 windturbines</li>
+                <li>€400.000 - Netaansluiting</li>
+                <li>€150.000 - Milieuonderzoek</li>
+                <li>€150.000 - Participatietraject omwonenden</li>
+            </ul>
+        </div>
+        
+        <div id="waarom" class="tab-content">
+            <h2>Waarom deze subsidie?</h2>
+            
+            <h3>🎯 Provinciaal doel</h3>
+            <p>
+                Deze subsidie past in het provinciale doel om in 2030 volledig klimaatneutraal te zijn. 
+                Windenergie is de meest efficiënte duurzame energiebron in Flevoland vanwege de open ligging 
+                en constante wind.
+            </p>
+            
+            <h3>🌍 Impact op klimaat</h3>
+            <div class="info-card">
+                <p><strong>CO2-reductie:</strong> 12.000 ton per jaar</p>
+                <p><strong>Vergelijkbaar met:</strong> 600.000 bomen planten, of 5.000 auto's van de weg halen</p>
+                <p><strong>Energieopwekking:</strong> 35 miljoen kWh per jaar - genoeg voor 8.000 huishoudens</p>
+            </div>
+            
+            <h3>📊 Waarom deze aanvraag is goedgekeurd</h3>
+            <ul style="margin-left: 20px;">
+                <li><strong>Locatie:</strong> Ideale windlocatie met minimale overlast voor omwonenden (850m afstand)</li>
+                <li><strong>Draagvlak:</strong> 87% van de omwonenden steunt het plan na informatiebijeenkomsten</li>
+                <li><strong>Milieu:</strong> Positief advies van Vogelbescherming en Staatsbosbeheer</li>
+                <li><strong>Efficiëntie:</strong> Moderne turbines met hoog rendement en vogelradar</li>
+                <li><strong>Participatie:</strong> Uitgebreid participatietraject met omwonenden</li>
+            </ul>
+        </div>
+        
+        <div id="locatie" class="tab-content">
+            <h2>Waar komt het project?</h2>
+            
+            <div class="info-card">
+                <p><strong>Locatie:</strong> Ketelbrug, Noordoostpolder</p>
+                <p><strong>Gemeente:</strong> Noordoostpolder</p>
+                <p><strong>Coördinaten:</strong> 52.7167°N, 5.7500°E</p>
+                <p><strong>Afstand tot bebouwing:</strong> 850 meter (ruim boven wettelijk minimum van 600m)</p>
+            </div>
+            
+            <h3>🗺️ Kaart en visualisaties</h3>
+            <p>Bekijk hieronder waar de windmolens precies komen te staan:</p>
+            
+            <div style="background: #e9ecef; padding: 100px 20px; text-align: center; border-radius: 6px; margin: 20px 0;">
+                <p style="color: #666;">📍 Interactieve kaart met locaties windturbines</p>
+                <p style="color: #999; font-size: 14px; margin-top: 10px;">(In de echte versie: interactieve kaart)</p>
+            </div>
+            
+            <div style="background: #e9ecef; padding: 100px 20px; text-align: center; border-radius: 6px; margin: 20px 0;">
+                <p style="color: #666;">📸 Fotomontage vanaf Ketelburg</p>
+                <p style="color: #999; font-size: 14px; margin-top: 10px;">(In de echte versie: foto met visualisatie)</p>
+            </div>
+            
+            <h3>🏘️ Impact op omgeving</h3>
+            <p><strong>Omwonenden binnen 2 km:</strong> Circa 120 huishoudens</p>
+            <p><strong>Maatregelen tegen overlast:</strong></p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Compensatieregeling €500/jaar voor huishoudens binnen 1 km</li>
+                <li>Plantenborder voor landschappelijke inpassing</li>
+                <li>Vogelradar met automatische stopfunctie</li>
+                <li>Monitoring van geluid en slagschaduw gedurende 5 jaar</li>
+            </ul>
+        </div>
+        
+        <div id="belanghebbenden" class="tab-content">
+            <h2>Wie zijn erbij betrokken?</h2>
+            
+            <div class="stakeholder">
+                <div class="stakeholder-header">👨‍👩‍👧‍👦 Omwonenden (120 huishoudens binnen 2km)</div>
+                <p><strong>Betrokkenheid:</strong> 3 informatiebijeenkomsten gehouden</p>
+                <p><strong>Draagvlak:</strong> 87% steunt het plan</p>
+                <p><strong>Zorgen:</strong> Geluidsoverlast, slagschaduw, waardevermindering woningen</p>
+                <div class="measure">
+                    <strong>Maatregelen:</strong> Compensatieregeling €500/jaar voor huishoudens <1km, 
+                    plantenborder als landschappelijke inpassing
+                </div>
+            </div>
+            
+            <div class="stakeholder">
+                <div class="stakeholder-header">🦅 Natuurorganisaties</div>
+                <p><strong>Betrokken:</strong> Vogelbescherming, Staatsbosbeheer</p>
+                <p><strong>Advies:</strong> Positief, mits vogelradar wordt geïnstalleerd</p>
+                <div class="measure">
+                    <strong>Maatregelen:</strong> Vogelradar met automatische stopfunctie, monitoring 5 jaar
+                </div>
+            </div>
+            
+            <div class="stakeholder">
+                <div class="stakeholder-header">🌾 Agrarische sector (3 bedrijven)</div>
+                <p><strong>Impact:</strong> Geringe vermindering landbouwgrond (0,8 hectare per turbine)</p>
+                <div class="measure">
+                    <strong>Compensatie:</strong> Pachtovereenkomst met grondeigenaren, marktconforme vergoeding
+                </div>
+            </div>
+            
+            <h3 style="margin-top: 30px;">🏢 Uitvoerende partij</h3>
+            <div class="info-card">
+                <p><strong>Naam:</strong> GreenWind B.V.</p>
+                <p><strong>KVK:</strong> 12345678</p>
+                <p><strong>Vestigingsplaats:</strong> Emmeloord</p>
+                <p><strong>Website:</strong> <a href="#">www.greenwind.example.nl</a></p>
+            </div>
+        </div>
+        
+        <div id="tijdlijn" class="tab-content">
+            <h2>Tijdlijn van het project</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">20 november 2023</div>
+                    <div>Eerste aanvraag subsidie ingediend</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">15 februari 2024</div>
+                    <div>MER-onderzoek (milieueffectrapport) gestart</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">10 juni 2024</div>
+                    <div>Informatiebijeenkomst 1 - Kennismaking (45 aanwezigen)</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">22 augustus 2024</div>
+                    <div>Informatiebijeenkomst 2 - Resultaten onderzoek (62 aanwezigen)</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">5 oktober 2024</div>
+                    <div>MER-onderzoek afgerond - Positief advies ontvangen</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">12 november 2024</div>
+                    <div>Informatiebijeenkomst 3 - Definitief plan gepresenteerd (38 aanwezigen)</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">10 januari 2025</div>
+                    <div><strong>Gedeputeerde Staten besluiten tot subsidietoekenning</strong></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">15 januari 2025</div>
+                    <div><strong>Publicatie besluit (vandaag)</strong></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">1 september 2025</div>
+                    <div><em>Verwachte start bouw (onder voorbehoud vergunningen)</em></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">1 maart 2026</div>
+                    <div><em>Verwachte oplevering en ingebruikname</em></div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="documenten" class="tab-content">
+            <h2>Alle documenten</h2>
+            
+            <div class="documents">
+                <div class="document">
+                    <div class="document-title">📋 Besluit Gedeputeerde Staten</div>
+                    <div class="document-meta">PDF • 2,3 MB</div>
+                    <div class="document-summary">Officieel besluit met toekenning subsidie en voorwaarden</div>
+                </div>
+                
+                <div class="document">
+                    <div class="document-title">🌍 Milieueffectrapport (MER)</div>
+                    <div class="document-meta">PDF • 8,7 MB</div>
+                    <div class="document-summary">Onderzoek naar impact op natuur, geluid, slagschaduw en landschap</div>
+                </div>
+                
+                <div class="document">
+                    <div class="document-title">📖 Burgersamenvatting MER</div>
+                    <div class="document-meta">PDF • 1,1 MB</div>
+                    <div class="document-summary">Toegankelijke samenvatting van het MER met infographics</div>
+                </div>
+                
+                <div class="document">
+                    <div class="document-title">👥 Participatierapport</div>
+                    <div class="document-meta">PDF • 3,2 MB</div>
+                    <div class="document-summary">Verslag van informatiebijeenkomsten en reacties omwonenden</div>
+                </div>
+                
+                <div class="document">
+                    <div class="document-title">🗺️ Kaart met locaties</div>
+                    <div class="document-meta">PNG • 450 KB</div>
+                    <div class="document-summary">Overzichtskaart met exacte locaties en afstanden tot bebouwing</div>
+                </div>
+                
+                <div class="document">
+                    <div class="document-title">📸 Visualisatie vanaf Ketelburg</div>
+                    <div class="document-meta">JPG • 680 KB</div>
+                    <div class="document-summary">Fotomontage hoe de windmolens eruit zullen zien vanaf de dijk</div>
+                </div>
+            </div>
+            
+            <h3 style="margin-top: 30px;">🔗 Gerelateerde documenten</h3>
+            <ul style="margin-left: 20px;">
+                <li><a href="#">Flevolandse Energiestrategie 2023-2030</a> - Doelstellingen windenergie</li>
+                <li><a href="#">Windpark Zeewolde (2022)</a> - Soortgelijk project met participatietraject</li>
+                <li><a href="#">Provinciale Regeling Duurzame Energie 2024</a> - Kader voor subsidiebeoordeling</li>
+            </ul>
+        </div>
+        
+        <div id="participatie" class="tab-content">
+            <h2>Uw mening telt</h2>
+            
+            <div class="cta-box">
+                <h3>⏰ U kunt tot 26 februari 2025 bezwaar maken</h3>
+                <p>Bent u het niet eens met dit besluit? Dan heeft u 42 dagen de tijd om bezwaar te maken.</p>
+                <a href="#" class="cta-button">📝 Bezwaarformulier downloaden</a>
+            </div>
+            
+            <h3>📋 Hoe maakt u bezwaar?</h3>
+            <div class="info-card">
+                <p><strong>Termijn:</strong> 15 januari 2025 t/m 26 februari 2025 (42 dagen)</p>
+                <p><strong>Indienen bij:</strong> Gedeputeerde Staten van Flevoland</p>
+                <p><strong>Postadres:</strong> Postbus 55, 8200 AB Lelystad</p>
+                <p><strong>E-mail:</strong> bezwaar@flevoland.nl</p>
+                <p style="margin-top: 15px;"><a href="#">Download bezwaarformulier (PDF)</a></p>
+            </div>
+            
+            <h3>❓ Vragen over dit besluit?</h3>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-label">Contactpersoon</div>
+                    <div class="contact-value">Drs. Jan Veenstra</div>
+                    <div style="margin-top: 5px; color: #666;">Beleidsmedewerker Duurzame Energie</div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-label">E-mail</div>
+                    <div class="contact-value">j.veenstra@flevoland.nl</div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-label">Telefoon</div>
+                    <div class="contact-value">0320-265 265</div>
+                    <div style="margin-top: 5px; color: #666;">Di & Do 14:00-16:00 uur</div>
+                </div>
+            </div>
+            
+            <h3>🗣️ Informatiebijeenkomst</h3>
+            <div class="info-card">
+                <p><strong>Datum:</strong> Woensdag 5 februari 2025</p>
+                <p><strong>Tijd:</strong> 19:30 - 21:30 uur</p>
+                <p><strong>Locatie:</strong> Gemeentehuis Noordoostpolder, Raadszaal</p>
+                <p><strong>Aanmelden:</strong> info@flevoland.nl (niet verplicht)</p>
+                <p style="margin-top: 15px;">Kom langs om vragen te stellen aan de projectleider en Gedeputeerde!</p>
+            </div>
+        </div>
+    </div>
+    
+    <a href="minimaal.html" class="comparison-link">
+        ← Vergelijk met minimale versie
+    </a>
+    
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Deactivate all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Activate selected tab
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

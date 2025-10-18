@@ -1,0 +1,187 @@
+{
+  "id": "2025-001-SUB",
+  "metadata": {
+    "titel": "Subsidie duurzame energie - Windmolenpark Noordoostpolder",
+    "publicatiedatum": "2025-01-15T14:30:00Z",
+    "besluitdatum": "2025-01-10",
+    "organisatie": "Provincie Flevoland",
+    "afdeling": "Economie en Duurzaamheid",
+    "categorie": "subsidie",
+    "tags": ["duurzame energie", "windenergie", "subsidie", "Noordoostpolder"]
+  },
+  
+  "samenvatting": {
+    "burgertaal": "De provincie Flevoland heeft €2,5 miljoen subsidie toegekend aan GreenWind B.V. voor de bouw van 5 windmolens in de Noordoostpolder. De windmolens komen aan de Ketelbrug en leveren elektriciteit voor ongeveer 8.000 huishoudens. De verwachte bouw start in september 2025.",
+    
+    "waarom": "Deze subsidie past in het provinciale doel om in 2030 volledig klimaatneutraal te zijn. Windenergie is de meest efficiënte duurzame energiebron in Flevoland vanwege de open ligging en constante wind.",
+    
+    "impact": "De windmolens leveren schone energie voor 8.000 huishoudens en verminderen de CO2-uitstoot met 12.000 ton per jaar. Dat is gelijk aan het planten van 600.000 bomen."
+  },
+  
+  "financieel": {
+    "bedrag": 2500000,
+    "valuta": "EUR",
+    "ontvanger": {
+      "naam": "GreenWind B.V.",
+      "kvk": "12345678",
+      "plaats": "Emmeloord",
+      "website": "https://www.greenwind.example.nl"
+    },
+    "verdeling": [
+      {"onderdeel": "Bouw 5 windturbines", "bedrag": 1800000},
+      {"onderdeel": "Netaansluiting", "bedrag": 400000},
+      {"onderdeel": "Milieuonderzoek", "bedrag": 150000},
+      {"onderdeel": "Participatietraject omwonenden", "bedrag": 150000}
+    ],
+    "eigen_bijdrage": 3500000,
+    "totale_investering": 6000000
+  },
+  
+  "locatie": {
+    "beschrijving": "Ketelbrug, Noordoostpolder",
+    "gemeente": "Noordoostpolder",
+    "provincie": "Flevoland",
+    "coordinaten": {
+      "lat": 52.7167,
+      "lon": 5.7500
+    },
+    "kaart_url": "/kaart/windmolenpark-ketelbrug.html",
+    "afstand_tot_bebouwing": "850 meter (ruim boven wettelijk minimum van 600m)"
+  },
+  
+  "belanghebbenden": [
+    {
+      "type": "omwonenden",
+      "aantal": "circa 120 huishoudens binnen 2km",
+      "betrokkenheid": "3 informatiebijeenkomsten gehouden, 87% steunt het plan",
+      "zorgen": ["geluidsoverlast", "slagschaduw", "waardevermindering woningen"],
+      "maatregelen": ["compensatieregeling €500/jaar voor huishoudens <1km", "plantenborder als landschappelijke inpassing"]
+    },
+    {
+      "type": "natuurorganisaties",
+      "organisaties": ["Vogelbescherming", "Staatsbosbeheer"],
+      "advies": "Positief, mits vogelradar wordt geïnstalleerd",
+      "maatregelen": ["vogelradar met automatische stopfunctie", "monitoring 5 jaar"]
+    },
+    {
+      "type": "agrarische_sector",
+      "aantal_bedrijven": 3,
+      "impact": "Geringe vermindering landbouwgrond (0,8 hectare per turbine)",
+      "compensatie": "Pachtovereenkomst met grondeigenaren, marktconforme vergoeding"
+    }
+  },
+  
+  "tijdlijn": [
+    {"datum": "2023-11-20", "gebeurtenis": "Eerste aanvraag subsidie"},
+    {"datum": "2024-02-15", "gebeurtenis": "MER-onderzoek gestart"},
+    {"datum": "2024-06-10", "gebeurtenis": "Informatiebijeenkomst 1 - kennismaking (45 aanwezigen)"},
+    {"datum": "2024-08-22", "gebeurtenis": "Informatiebijeenkomst 2 - resultaten onderzoek (62 aanwezigen)"},
+    {"datum": "2024-10-05", "gebeurtenis": "MER-onderzoek afgerond, positief advies"},
+    {"datum": "2024-11-12", "gebeurtenis": "Informatiebijeenkomst 3 - definitief plan (38 aanwezigen)"},
+    {"datum": "2025-01-10", "gebeurtenis": "Gedeputeerde Staten besluiten tot subsidietoekenning"},
+    {"datum": "2025-01-15", "gebeurtenis": "Publicatie besluit"},
+    {"datum": "2025-09-01", "gebeurtenis": "Verwachte start bouw (onder voorbehoud vergunningen)"},
+    {"datum": "2026-03-01", "gebeurtenis": "Verwachte oplevering en ingebruikname"}
+  ],
+  
+  "documenten": [
+    {
+      "titel": "Besluit Gedeputeerde Staten",
+      "type": "PDF",
+      "omvang": "2,3 MB",
+      "url": "/documenten/2025-001-SUB-besluit-gs.pdf",
+      "samenvatting": "Officieel besluit met toekenning subsidie en voorwaarden"
+    },
+    {
+      "titel": "Milieueffectrapport (MER)",
+      "type": "PDF",
+      "omvang": "8,7 MB",
+      "url": "/documenten/2025-001-SUB-mer.pdf",
+      "samenvatting": "Onderzoek naar impact op natuur, geluid, slagschaduw en landschap"
+    },
+    {
+      "titel": "Burgersamenvatting MER",
+      "type": "PDF",
+      "omvang": "1,1 MB",
+      "url": "/documenten/2025-001-SUB-mer-samenvatting.pdf",
+      "samenvatting": "Toegankelijke samenvatting van het MER met infographics"
+    },
+    {
+      "titel": "Participatierapport",
+      "type": "PDF",
+      "omvang": "3,2 MB",
+      "url": "/documenten/2025-001-SUB-participatie.pdf",
+      "samenvatting": "Verslag van informatiebijeenkomsten en reacties omwonenden"
+    },
+    {
+      "titel": "Kaart met locaties windturbines",
+      "type": "PNG",
+      "omvang": "450 KB",
+      "url": "/documenten/2025-001-SUB-kaart.png",
+      "samenvatting": "Overzichtskaart met exacte locaties en afstanden tot bebouwing"
+    },
+    {
+      "titel": "Visualisatie vanaf Ketelburg",
+      "type": "JPG",
+      "omvang": "680 KB",
+      "url": "/documenten/2025-001-SUB-visualisatie.jpg",
+      "samenvatting": "Fotomontage hoe de windmolens eruit zullen zien vanaf de dijk"
+    }
+  ],
+  
+  "participatie": {
+    "bezwaar_mogelijk": true,
+    "bezwaartermijn": {
+      "start": "2025-01-15",
+      "einde": "2025-02-26",
+      "dagen": 42
+    },
+    "bezwaar_indienen": {
+      "hoe": "Schriftelijk bij Gedeputeerde Staten van Flevoland",
+      "adres": "Postbus 55, 8200 AB Lelystad",
+      "email": "bezwaar@flevoland.nl",
+      "formulier": "/formulieren/bezwaarschrift-subsidie.pdf"
+    },
+    "vragen": {
+      "contactpersoon": "Drs. Jan Veenstra",
+      "functie": "Beleidsmedewerker Duurzame Energie",
+      "email": "j.veenstra@flevoland.nl",
+      "telefoon": "0320-265 265",
+      "spreekuur": "Dinsdag en donderdag 14:00-16:00 uur"
+    },
+    "informatiebijeenkomst": {
+      "datum": "2025-02-05",
+      "tijd": "19:30-21:30 uur",
+      "locatie": "Gemeentehuis Noordoostpolder, Raadszaal",
+      "aanmelden": "info@flevoland.nl (niet verplicht)"
+    }
+  },
+  
+  "gerelateerd": [
+    {
+      "type": "beleidsdocument",
+      "titel": "Flevolandse Energiestrategie 2023-2030",
+      "url": "/beleid/energiestrategie-2023-2030",
+      "relevantie": "Doelstellingen windenergie"
+    },
+    {
+      "type": "vergelijkbaar_project",
+      "titel": "Windpark Zeewolde (2022)",
+      "url": "/projecten/windpark-zeewolde-2022",
+      "relevantie": "Soortgelijk project met participatietraject"
+    },
+    {
+      "type": "subsidieregeling",
+      "titel": "Provinciale Regeling Duurzame Energie 2024",
+      "url": "/regelingen/duurzame-energie-2024",
+      "relevantie": "Kader voor subsidiebeoordeling"
+    }
+  ],
+  
+  "toegankelijkheid": {
+    "taal_niveau": "B1 (eenvoudig Nederlands)",
+    "formaten": ["HTML", "PDF", "eenvoudig Nederlands PDF", "audio (voorleesfunctie)"],
+    "vertalingen_beschikbaar": ["Engels", "Pools (veel arbeidsmigranten in regio)"],
+    "wcag_niveau": "AA"
+  }
+}
