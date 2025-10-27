@@ -1,323 +1,384 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Betekenisvol Openbaar Maken - Demonstrator</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .header {
-            text-align: center;
-            color: white;
-            margin-bottom: 50px;
-        }
-        
-        .header h1 {
-            font-size: 42px;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-        
-        .header .subtitle {
-            font-size: 20px;
-            opacity: 0.95;
-            margin-bottom: 10px;
-        }
-        
-        .header .source {
-            font-size: 14px;
-            opacity: 0.8;
-        }
-        
-        .intro {
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-            margin-bottom: 40px;
-        }
-        
-        .intro h2 {
-            color: #333;
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-        
-        .intro p {
-            color: #555;
-            font-size: 16px;
-            margin-bottom: 15px;
-        }
-        
-        .problem-box {
-            background: #fff3cd;
-            border-left: 5px solid #ffc107;
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 4px;
-        }
-        
-        .problem-box h3 {
-            color: #856404;
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-        
-        .problem-box ul {
-            margin-left: 20px;
-        }
-        
-        .problem-box li {
-            color: #856404;
-            margin: 8px 0;
-        }
-        
-        .comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .demo-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
-        
-        .demo-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 32px rgba(0,0,0,0.2);
-        }
-        
-        .demo-card.bad {
-            border: 3px solid #dc3545;
-        }
-        
-        .demo-card.good {
-            border: 3px solid #28a745;
-        }
-        
-        .demo-header {
-            padding: 30px;
-            text-align: center;
-        }
-        
-        .demo-card.bad .demo-header {
-            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
-        }
-        
-        .demo-card.good .demo-header {
-            background: linear-gradient(135deg, #28a745 0%, #20853a 100%);
-        }
-        
-        .demo-icon {
-            font-size: 64px;
-            margin-bottom: 15px;
-        }
-        
-        .demo-title {
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        
-        .demo-subtitle {
-            color: rgba(255,255,255,0.9);
-            font-size: 16px;
-        }
-        
-        .demo-body {
-            padding: 30px;
-        }
-        
-        .demo-body h3 {
-            color: #333;
-            font-size: 18px;
-            margin-bottom: 15px;
-        }
-        
-        .demo-body ul {
-            margin-left: 20px;
-        }
-        
-        .demo-body li {
-            margin: 8px 0;
-            color: #555;
-        }
-        
-        .demo-button {
-            display: block;
-            background: #667eea;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 16px;
-            border-radius: 0 0 8px 8px;
-            transition: background 0.3s;
-        }
-        
-        .demo-button:hover {
-            background: #5568d3;
-        }
-        
-        .footer {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-            margin-top: 40px;
-            text-align: center;
-        }
-        
-        .footer h3 {
-            color: #333;
-            font-size: 22px;
-            margin-bottom: 15px;
-        }
-        
-        .footer p {
-            color: #555;
-            margin-bottom: 20px;
-        }
-        
-        .footer a {
-            color: #667eea;
-            text-decoration: underline;
-        }
-        
-        @media (max-width: 768px) {
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Betekenisvol Openbaar Maken - Demonstrator</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                line-height: 1.6;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                min-height: 100vh;
+                padding: 40px 20px;
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .header {
+                text-align: center;
+                color: white;
+                margin-bottom: 50px;
+            }
+
             .header h1 {
-                font-size: 28px;
+                font-size: 42px;
+                margin-bottom: 15px;
+                text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             }
-            
-            .comparison {
-                grid-template-columns: 1fr;
-                gap: 20px;
+
+            .header .subtitle {
+                font-size: 20px;
+                opacity: 0.95;
+                margin-bottom: 10px;
             }
-            
+
+            .header .source {
+                font-size: 14px;
+                opacity: 0.8;
+            }
+
             .intro {
-                padding: 25px;
+                background: white;
+                padding: 40px;
+                border-radius: 12px;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+                margin-bottom: 40px;
             }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>🌟 Betekenisvol Openbaar Maken</h1>
-            <p class="subtitle">Van formeel correct naar echt begrijpelijk</p>
-            <p class="source">Gebaseerd op USBO-onderzoek "Informatiebehoeften van burgers" (maart 2025)</p>
-        </div>
-        
-        <div class="intro">
-            <h2>Het probleem met huidige Woo-publicaties</h2>
-            <p>
-                Veel overheidspublicaties voldoen formeel aan de Wet open overheid (Woo), maar zijn in de praktijk 
-                niet bruikbaar voor burgers. Het USBO-onderzoek toont aan dat de informatiebehoeften van burgers 
-                <strong>niet aansluiten bij de wettelijke categorieën</strong>.
-            </p>
-            
-            <div class="problem-box">
-                <h3>⚠️ Wat gaat er mis?</h3>
-                <ul>
-                    <li><strong>Minimale metadata:</strong> Alleen verplichte velden, geen context</li>
-                    <li><strong>Juridisch jargon:</strong> Onbegrijpelijk voor het algemene publiek</li>
-                    <li><strong>Geen participatie:</strong> Burgers kunnen niet reageren of vragen stellen</li>
-                    <li><strong>Geen doelgroep-afstemming:</strong> Iedereen krijgt dezelfde technische informatie</li>
-                    <li><strong>Ontbrekende context:</strong> Burgers weten niet waarom besluiten zijn genomen</li>
+
+            .intro h2 {
+                color: #333;
+                font-size: 28px;
+                margin-bottom: 20px;
+            }
+
+            .intro p {
+                color: #555;
+                font-size: 16px;
+                margin-bottom: 15px;
+            }
+
+            .problem-box {
+                background: #fff3cd;
+                border-left: 5px solid #ffc107;
+                padding: 20px;
+                margin: 25px 0;
+                border-radius: 4px;
+            }
+
+            .problem-box h3 {
+                color: #856404;
+                font-size: 20px;
+                margin-bottom: 15px;
+            }
+
+            .problem-box ul {
+                margin-left: 20px;
+            }
+
+            .problem-box li {
+                color: #856404;
+                margin: 8px 0;
+            }
+
+            .comparison {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+                margin-top: 40px;
+            }
+
+            .demo-card {
+                background: white;
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+                transition:
+                    transform 0.3s,
+                    box-shadow 0.3s;
+                cursor: pointer;
+            }
+
+            .demo-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+            }
+
+            .demo-card.bad {
+                border: 3px solid #dc3545;
+            }
+
+            .demo-card.good {
+                border: 3px solid #28a745;
+            }
+
+            .demo-header {
+                padding: 30px;
+                text-align: center;
+            }
+
+            .demo-card.bad .demo-header {
+                background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            }
+
+            .demo-card.good .demo-header {
+                background: linear-gradient(135deg, #28a745 0%, #20853a 100%);
+            }
+
+            .demo-icon {
+                font-size: 64px;
+                margin-bottom: 15px;
+            }
+
+            .demo-title {
+                color: white;
+                font-size: 24px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            .demo-subtitle {
+                color: rgba(255, 255, 255, 0.9);
+                font-size: 16px;
+            }
+
+            .demo-body {
+                padding: 30px;
+            }
+
+            .demo-body h3 {
+                color: #333;
+                font-size: 18px;
+                margin-bottom: 15px;
+            }
+
+            .demo-body ul {
+                margin-left: 20px;
+            }
+
+            .demo-body li {
+                margin: 8px 0;
+                color: #555;
+            }
+
+            .demo-button {
+                display: block;
+                background: #667eea;
+                color: white;
+                text-align: center;
+                padding: 15px;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 16px;
+                border-radius: 0 0 8px 8px;
+                transition: background 0.3s;
+            }
+
+            .demo-button:hover {
+                background: #5568d3;
+            }
+
+            .footer {
+                background: white;
+                padding: 30px;
+                border-radius: 12px;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+                margin-top: 40px;
+                text-align: center;
+            }
+
+            .footer h3 {
+                color: #333;
+                font-size: 22px;
+                margin-bottom: 15px;
+            }
+
+            .footer p {
+                color: #555;
+                margin-bottom: 20px;
+            }
+
+            .footer a {
+                color: #667eea;
+                text-decoration: underline;
+            }
+
+            @media (max-width: 768px) {
+                .header h1 {
+                    font-size: 28px;
+                }
+
+                .comparison {
+                    grid-template-columns: 1fr;
+                    gap: 20px;
+                }
+
+                .intro {
+                    padding: 25px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>🌟 Betekenisvol Openbaar Maken</h1>
+                <p class="subtitle">
+                    Van formeel correct naar echt begrijpelijk
+                </p>
+                <p class="source">
+                    Gebaseerd op USBO-onderzoek "Informatiebehoeften van
+                    burgers" (maart 2025)
+                </p>
+            </div>
+
+            <div class="intro">
+                <h2>Het probleem met huidige Woo-publicaties</h2>
+                <p>
+                    Veel overheidspublicaties voldoen formeel aan de Wet open
+                    overheid (Woo), maar zijn in de praktijk niet bruikbaar voor
+                    burgers. Het USBO-onderzoek toont aan dat de
+                    informatiebehoeften van burgers
+                    <strong
+                        >niet aansluiten bij de wettelijke categorieën</strong
+                    >.
+                </p>
+
+                <div class="problem-box">
+                    <h3>⚠️ Wat gaat er mis?</h3>
+                    <ul>
+                        <li>
+                            <strong>Minimale metadata:</strong> Alleen
+                            verplichte velden, geen context
+                        </li>
+                        <li>
+                            <strong>Juridisch jargon:</strong> Onbegrijpelijk
+                            voor het algemene publiek
+                        </li>
+                        <li>
+                            <strong>Geen participatie:</strong> Burgers kunnen
+                            niet reageren of vragen stellen
+                        </li>
+                        <li>
+                            <strong>Geen doelgroep-afstemming:</strong> Iedereen
+                            krijgt dezelfde technische informatie
+                        </li>
+                        <li>
+                            <strong>Ontbrekende context:</strong> Burgers weten
+                            niet waarom besluiten zijn genomen
+                        </li>
+                    </ul>
+                </div>
+
+                <p>
+                    Deze demonstrator laat met een concreet voorbeeld zien hoe
+                    het <strong>beter kan</strong>. We vergelijken een minimale
+                    Woo-publicatie met een betekenisvolle variant die wél
+                    aansluit bij de informatiebehoeften van burgers.
+                </p>
+            </div>
+
+            <div class="comparison">
+                <div
+                    class="demo-card bad"
+                    onclick="window.location.href='demo/minimaal.html'"
+                >
+                    <div class="demo-header">
+                        <div class="demo-icon">❌</div>
+                        <div class="demo-title">Minimale Publicatie</div>
+                        <div class="demo-subtitle">
+                            Formeel correct, niet bruikbaar
+                        </div>
+                    </div>
+                    <div class="demo-body">
+                        <h3>Kenmerken:</h3>
+                        <ul>
+                            <li>Alleen verplichte velden</li>
+                            <li>Geen context of uitleg</li>
+                            <li>Geen contactinformatie</li>
+                            <li>Geen participatiemogelijkheden</li>
+                            <li>Technisch taalgebruik</li>
+                        </ul>
+                    </div>
+                    <a href="demo/minimaal.html" class="demo-button"
+                        >Bekijk minimale versie →</a
+                    >
+                </div>
+
+                <div
+                    class="demo-card good"
+                    onclick="window.location.href='demo/betekenisvol.html'"
+                >
+                    <div class="demo-header">
+                        <div class="demo-icon">✅</div>
+                        <div class="demo-title">Betekenisvolle Publicatie</div>
+                        <div class="demo-subtitle">
+                            Transparant én begrijpelijk
+                        </div>
+                    </div>
+                    <div class="demo-body">
+                        <h3>Kenmerken:</h3>
+                        <ul>
+                            <li>Context en achtergrond</li>
+                            <li>Begrijpelijke taal (B1-niveau)</li>
+                            <li>Interactieve kaarten & tijdlijnen</li>
+                            <li>Duidelijke participatiemogelijkheden</li>
+                            <li>Contactpersoon met bereikbaarheid</li>
+                            <li>Doelgroep-specifieke informatie</li>
+                        </ul>
+                    </div>
+                    <a href="demo/betekenisvol.html" class="demo-button"
+                        >Bekijk betekenisvolle versie →</a
+                    >
+                </div>
+            </div>
+
+            <div class="footer">
+                <h3>📚 Meer informatie</h3>
+                <p>
+                    Dit project is gebaseerd op wetenschappelijk onderzoek naar
+                    de informatiebehoeften van burgers bij actieve
+                    openbaarmaking door de overheid.
+                </p>
+                <p>
+                    <strong>Bronnen:</strong>
+                </p>
+                <ul style="list-style: none; padding: 0">
+                    <li style="margin: 10px 0">
+                        📄
+                        <a
+                            href="rob-advies-betekenisvol-transparant-samenvatting.pdf"
+                            target="_blank"
+                        >
+                            ROB Advies: Betekenisvol Transparant (Samenvatting)
+                        </a>
+                    </li>
+                    <li style="margin: 10px 0">
+                        📄
+                        <a
+                            href="https://www.acoi.nl/.uc/f27a068e20101c92c0000680ae901f008671d8f6d5e3900/250311-rapport-usbo-informatiebehoeften-burgers.pdf"
+                            target="_blank"
+                        >
+                            USBO-rapport: Informatiebehoeften van burgers (maart
+                            2025)
+                        </a>
+                    </li>
                 </ul>
-            </div>
-            
-            <p>
-                Deze demonstrator laat met een concreet voorbeeld zien hoe het <strong>beter kan</strong>. 
-                We vergelijken een minimale Woo-publicatie met een betekenisvolle variant die wél aansluit 
-                bij de informatiebehoeften van burgers.
-            </p>
-        </div>
-        
-        <div class="comparison">
-            <div class="demo-card bad" onclick="window.location.href='demo/minimaal.html'">
-                <div class="demo-header">
-                    <div class="demo-icon">❌</div>
-                    <div class="demo-title">Minimale Publicatie</div>
-                    <div class="demo-subtitle">Formeel correct, niet bruikbaar</div>
-                </div>
-                <div class="demo-body">
-                    <h3>Kenmerken:</h3>
-                    <ul>
-                        <li>Alleen verplichte velden</li>
-                        <li>Geen context of uitleg</li>
-                        <li>Geen contactinformatie</li>
-                        <li>Geen participatiemogelijkheden</li>
-                        <li>Technisch taalgebruik</li>
-                    </ul>
-                </div>
-                <a href="demo/minimaal.html" class="demo-button">Bekijk minimale versie →</a>
-            </div>
-            
-            <div class="demo-card good" onclick="window.location.href='demo/betekenisvol.html'">
-                <div class="demo-header">
-                    <div class="demo-icon">✅</div>
-                    <div class="demo-title">Betekenisvolle Publicatie</div>
-                    <div class="demo-subtitle">Transparant én begrijpelijk</div>
-                </div>
-                <div class="demo-body">
-                    <h3>Kenmerken:</h3>
-                    <ul>
-                        <li>Context en achtergrond</li>
-                        <li>Begrijpelijke taal (B1-niveau)</li>
-                        <li>Interactieve kaarten & tijdlijnen</li>
-                        <li>Duidelijke participatiemogelijkheden</li>
-                        <li>Contactpersoon met bereikbaarheid</li>
-                        <li>Doelgroep-specifieke informatie</li>
-                    </ul>
-                </div>
-                <a href="demo/betekenisvol.html" class="demo-button">Bekijk betekenisvolle versie →</a>
+                <p style="margin-top: 20px; font-size: 14px; color: #888">
+                    Dit is een demonstrator voor educatieve doeleinden. De
+                    voorbeelden zijn fictief.
+                </p>
             </div>
         </div>
-        
-        <div class="footer">
-            <h3>📚 Meer informatie</h3>
-            <p>
-                Dit project is gebaseerd op wetenschappelijk onderzoek naar de informatiebehoeften van burgers 
-                bij actieve openbaarmaking door de overheid.
-            </p>
-            <p>
-                <strong>Bron:</strong> 
-                <a href="https://www.acoi.nl/.uc/f27a068e20101c92c0000680ae901f008671d8f6d5e3900/250311-rapport-usbo-informatiebehoeften-burgers.pdf" target="_blank">
-                    USBO-rapport: Informatiebehoeften van burgers (maart 2025)
-                </a>
-            </p>
-            <p style="margin-top: 20px; font-size: 14px; color: #888;">
-                Dit is een demonstrator voor educatieve doeleinden. De voorbeelden zijn fictief.
-            </p>
-        </div>
-    </div>
-</body>
+    </body>
 </html>
 <!-- Updated Sat Oct 18 17:15:44 CEST 2025 -->
